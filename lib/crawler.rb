@@ -1,5 +1,6 @@
 require 'yaml'
 require 'pathname'
+require 'pry'
 require 'active_support/all'
 
 module Crawler
@@ -10,7 +11,6 @@ module Crawler
 
   def self.setup_env
     setup_load_path
-    setup_autoloader
     @mutex = ::Mutex.new
   end
 
@@ -30,14 +30,12 @@ module Crawler
     end
   end
 
-  def self.setup_autoloader
-    def Object.const_missing(name)
-      Crawler.mutex.synchronize do
-        file = name.to_s.underscore
-        require file
-        klass = const_get(name)
-        klass ? klass : raise("Class not found[1]: #{name}")
-      end
+  def Object.const_missing(name)
+    Crawler.mutex.synchronize do
+      file = name.to_s.underscore
+      require file
+      klass = const_get(name)
+      klass ? klass : raise("Class not found[1]: #{name}")
     end
   end
 

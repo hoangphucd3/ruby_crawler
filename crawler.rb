@@ -1,5 +1,6 @@
 require 'benchmark'
 require_relative 'lib/crawler'
+require_relative 'lib/core_ext/string'
 
 modules = ARGV[0].split(',') rescue []
 

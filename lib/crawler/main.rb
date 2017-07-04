@@ -11,11 +11,18 @@ module Crawler
     # @return [void]
     def run
       modules.each do |module_name|
+        generate_module_data_folder(module_name)
         run_module(module_name)
       end
     end
 
     protected
+
+    # @param name [String]
+    def generate_module_data_folder(name)
+      dir = "#{Crawler.root}/data-holder/#{name}"
+      FileUtils.mkdir_p(dir) unless File.directory?(dir)
+    end
 
     # @param name [String]
     # @return [void]

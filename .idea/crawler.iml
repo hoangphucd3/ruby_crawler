@@ -13,5 +13,6 @@
     <orderEntry type="library" scope="PROVIDED" name="io-console (v0.4.6, rbenv: 2.4.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="multi_xml (v0.6.0, rbenv: 2.4.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.8.0, rbenv: 2.4.1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="pry (v0.10.4, rbenv: 2.4.1) [gem]" level="application" />
   </component>
 </module>

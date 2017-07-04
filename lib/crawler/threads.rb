@@ -36,7 +36,7 @@ module Crawler
 
     # @return [void]
     def set_up_thread_pool
-      puts "Spawning #{size} threads..."
+      puts "Spawning #{size} threads...".green
       1.upto(size).each do |i|
         @threads << spawn_thread(i)
       end
