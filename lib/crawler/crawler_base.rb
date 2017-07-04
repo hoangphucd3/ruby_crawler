@@ -1,14 +1,16 @@
 module Crawler
   class CrawlerBase
     attr_reader :agent
+    attr_reader :parser
 
     def self.crawl(*args)
       new(*args).crawl
     end
 
     # @param httppatry
-    def initialize(httppatry)
+    def initialize(httppatry, nokogiri)
       @agent = httppatry
+      @parser = nokogiri
     end
 
     # @abstract

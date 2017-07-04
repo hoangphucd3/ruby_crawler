@@ -22,7 +22,7 @@ module Crawler
     def run_module(name)
       name = "#{name}_module"
 
-      Object.const_get(name.camelcase).run
+      Object.const_get(name.camelize).run
     end
 
   end

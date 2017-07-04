@@ -1,3 +1,7 @@
+require 'yaml'
+require 'pathname'
+require 'active_support/all'
+
 module Crawler
   autoload :Main, 'crawler/main'
   autoload :Threads, 'crawler/threads'
