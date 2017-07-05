@@ -6,7 +6,7 @@ class LazadaCrawler < Crawler::CrawlerBase
   def crawl
     valid_product_file_name = "data-holder/lazada/product_#{category.underscore}.csv"
     output_file = CSV.open(valid_product_file_name, 'w')
-    output_file << ['product_title', 'product_url', 'product_image', 'product_price', 'product_details']
+    output_file << %w[product_title product_url product_image product_price product_details]
 
     # Get meta info from first page
     first_page = agent.get("#{url}/#{category}/?itemperpage=120")
@@ -31,7 +31,7 @@ class LazadaCrawler < Crawler::CrawlerBase
           log "Processing #{product_name} - Page: #{page_number}/#{last_page}".yellow
 
           product_url = product['url'].gsub(/(\?.+)/, '')
-          product_price = (product['offers']['price'].to_i)/22000
+          product_price = product['offers']['price'].to_i / 22_000
 
           product_detail_elements = agent.get(product_url)
           product_desc = parser::HTML(product_detail_elements).css('#productDetails').text
